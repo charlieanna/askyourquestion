@@ -1,1 +1,6 @@
-Welcome to askyourquestions
+<%= form_for @question do |f|%>
+ <%= f.text_field :body,placeholder:"Ask your question here" %>
+ <%= f.submit "Ask"%>
+<% end %>
+
+<%= render @questions %>
