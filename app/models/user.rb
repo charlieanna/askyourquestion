@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
      new { |u| u.guest = true  }
   end
   
-  def name
-    guest ? "Guest" : self.name
+  def username
+    guest ? "Guest" : name
   end
 end

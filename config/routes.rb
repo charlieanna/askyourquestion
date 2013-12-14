@@ -3,6 +3,7 @@ Askyourquestion::Application.routes.draw do
   get "votes/destroy"
   devise_for :users
   root :to => "homes#show"
+   get "home" =>  "homes#show"
   resources :questions, only: [:create] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'

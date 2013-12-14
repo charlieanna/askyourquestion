@@ -9,14 +9,14 @@
 </head>
 <body>
   <div id="user_nav">
-    
-      Signed in as <%= current_user.name %>
-      <% if current_user.guest? %>
-         <%= link_to "Sign in with Twitter", "/auth/twitter"%>
-       <% else %>
-         <%= link_to "Sign out", logout_path,method: :delete %>
-       <% end %>
-     
+    Signed in as <%= current_user.username %>
+    <% if current_user.guest? %>
+       <%= link_to "Sign in with Twitter", "/auth/twitter"%>
+        <%= link_to "Sign in with Facebook", "/auth/facebook"%>
+     <% else %>
+       <%= link_to "Sign out", logout_path,method: :delete %>
+     <% end %>
+   
    
   </div>
   <div id="login">
