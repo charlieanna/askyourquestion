@@ -1,9 +1,13 @@
 class QuestionsController < ApplicationController
-  def new
-    @question = Question.new
-  end
   def create 
     @question  = Question.new(question_params)
     @question.save
+    redirect_to homes_path
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:body)
   end
 end
