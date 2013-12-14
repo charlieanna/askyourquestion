@@ -1,12 +1,12 @@
 <div class="well well-lg" style="margin-top:3%">
-  <div class="row">
-    <div class='col-md-1'>
+  <div class="row question">
+    <div class='col-md-1 vote_button'>
       <%= vote_button question %>
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3 body'>
       <%= question.body %>
     </div>
-    <div class='col-md-4'>
+    <div class='col-md-4 votes'>
     
       <%= image_tag("vote.png", :size => "50x50", :alt => "Edit Entry") %>
       <%= pluralize(question.votes.up.count, 'vote') %>

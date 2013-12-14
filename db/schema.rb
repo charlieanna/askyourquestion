@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214154126) do
+ActiveRecord::Schema.define(version: 20131214202419) do
 
   create_table "questions", force: true do |t|
     t.text     "body"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20131214154126) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "email"
   end
 
   create_table "votes", force: true do |t|

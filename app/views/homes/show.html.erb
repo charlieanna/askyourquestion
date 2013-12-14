@@ -1,9 +1,13 @@
+
 <%= form_for @question do |f|%>
 <div class="col-xs-9">
- <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
+  <%= f.label :body %>
+  <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
  
 </div>
  <%= f.submit "Ask",class: "btn btn-primary"%>
 <% end %>
  
-<%= render @questions %>
+<div class="questions">
+  <%= render @questions %>
+</div>
