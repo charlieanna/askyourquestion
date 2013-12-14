@@ -9,5 +9,6 @@
 <% end %>
  
 <div class="questions">
-  <%= render @questions %>
+  
+  <%= render :partial => 'questions/question', :collection => @questions.sort!{|a,b| a.votes.up.count <=> b.votes.up.count}.reverse! %>
 </div>
