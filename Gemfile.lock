@@ -29,6 +29,8 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -47,6 +49,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    font-awesome-sass (4.0.2)
+      sass-rails (>= 3.1.1)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -149,8 +153,10 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.8.0)
+  bootstrap-sass (~> 3.0.3.0)
   coffee-rails (~> 4.0.0)
   devise
+  font-awesome-sass
   jbuilder (~> 1.2)
   jquery-rails
   omniauth-facebook

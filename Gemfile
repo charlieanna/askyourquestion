@@ -11,6 +11,8 @@ end
 group :production do
   gem 'pg'
 end
+gem 'font-awesome-sass'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # Use SCSS for stylesheets

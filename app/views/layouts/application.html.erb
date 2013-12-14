@@ -232,8 +232,10 @@
   <div id="user_nav">
     <% if current_user %>
       Signed in as <%= current_user.name %>
+      <%= link_to "Sign out", logout_path %>
     <% else %>
       <%= link_to "Sign in with Twitter", "/auth/twitter"%>
+     
     <% end %>
   </div>
   <div id="login">

@@ -1,6 +1,6 @@
 <%= form_for @question do |f|%>
  <%= f.text_field :body,placeholder:"Ask your question here" %>
- <%= f.submit "Ask"%>
+ <%= f.submit "Ask",class: "btn btn-primary"%>
 <% end %>
-
+ 
 <%= render @questions %>

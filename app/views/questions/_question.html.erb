@@ -1,3 +1,14 @@
-<%= div_for question do %>
-  <%= question.body %><%= vote_button question %>
-<% end %>
+<div class="well well-lg">
+  <div class="row">
+    <div class='col-md-1'>
+      <%= vote_button question %>
+    </div>
+    <div class='col-md-4'>
+      <%= question.body %>
+    </div>
+    <div class='col-md-4'>
+      <%= question.votes.up.count %>
+    </div>
+  </div>
+  
+</div>
