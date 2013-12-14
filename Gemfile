@@ -11,6 +11,15 @@ end
 group :production do
   gem 'pg'
 end
+
+group :test do
+  gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '2.5.0'
+  gem 'spork-rails', '4.0.0'
+  gem 'guard-spork', '1.5.0'
+  gem 'childprocess', '0.3.6'
+  gem "launchy", "~> 2.3.0"
+end
 gem 'font-awesome-sass'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'omniauth-facebook'
