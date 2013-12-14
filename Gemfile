@@ -14,6 +14,7 @@ end
 
 group :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'capybara','1.1.4'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
