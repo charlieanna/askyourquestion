@@ -3,11 +3,14 @@
     <div class='col-md-1'>
       <%= vote_button question %>
     </div>
-    <div class='col-md-4'>
+    <div class='col-md-3'>
       <%= question.body %>
     </div>
     <div class='col-md-4'>
-      <%= question.votes.up.count %>
+    
+      <%= image_tag("vote.png", :size => "50x50", :alt => "Edit Entry") %>
+      <%= pluralize(question.votes.up.count, 'vote') %>
+      
     </div>
   </div>
   
