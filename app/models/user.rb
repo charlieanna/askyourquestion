@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
       :uid => auth["uid"],
       :name => auth["info"]["name"])
   end
+  
+  def self.new_guest
+     new { |u| u.guest = true  }
+  end
+  
+  def name
+    guest ? "Guest" : self.name
+  end
 end

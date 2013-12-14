@@ -9,6 +9,6 @@ Askyourquestion::Application.routes.draw do
   end
   resource :homes, only: [:show]
   get  'auth/:provider/callback' => 'sessions#create',:as => 'login'
-  post 'logout' => 'sessions#destroy'
+  delete 'logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
 end

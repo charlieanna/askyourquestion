@@ -230,13 +230,15 @@
 </head>
 <body>
   <div id="user_nav">
-    <% if current_user %>
+    
       Signed in as <%= current_user.name %>
-      <%= link_to "Sign out", logout_path %>
-    <% else %>
-      <%= link_to "Sign in with Twitter", "/auth/twitter"%>
+      <% if current_user.guest? %>
+         <%= link_to "Sign in with Twitter", "/auth/twitter"%>
+       <% else %>
+         <%= link_to "Sign out", logout_path,method: :delete %>
+       <% end %>
      
-    <% end %>
+   
   </div>
   <div id="login">
  
