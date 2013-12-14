@@ -1,5 +1,8 @@
 <%= form_for @question do |f|%>
- <%= f.text_field :body,placeholder:"Ask your question here" %>
+<div class="col-xs-9">
+ <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
+ 
+</div>
  <%= f.submit "Ask",class: "btn btn-primary"%>
 <% end %>
  
