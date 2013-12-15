@@ -28,9 +28,16 @@
 </head>
 
 <body>
- 
+  <% if notice %>
+  <%= notice %>
+  <% end %>
+  <% if alert %>
+  <%= alert %>
+  <% end %>
   <%= render 'layouts/header' %>
-  <div id="login">
+  
+  
+  
  
  
 

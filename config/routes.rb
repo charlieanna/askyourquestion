@@ -4,7 +4,11 @@ Askyourquestion::Application.routes.draw do
   
   get "votes/create"
   get "votes/destroy"
-  devise_for :users
+  resources :events,only: [:new,:create]
+  resources :users do
+    post 'join' => 'subscribers#create'
+    # delete 'follow' => 'following_relationships#destroy'
+  end
   root :to => "homes#show"
    get "home" =>  "homes#show"
   resources :questions, only: [:create,:index] do

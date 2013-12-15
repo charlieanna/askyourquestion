@@ -1,0 +1,4 @@
+<%= form_for :subscriber,url: user_join_path(current_user) do |f|%>
+  <%= f.text_field :code ,placeholder: "Enter the code of the event to join:",required: true%>
+  <%= f.submit "Join Event",class:"btn btn-primary"%>
+<% end %>

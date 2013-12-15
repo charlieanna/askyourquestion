@@ -1,0 +1,5 @@
+<%= form_for @event do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name,placeholder: "Enter the event name here: "%>
+  <%= f.submit "Create Event",class:"btn btn-primary" %>
+<% end %>
