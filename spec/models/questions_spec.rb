@@ -12,10 +12,19 @@ describe Question do
     end
   end
   
-  describe "when a user likes the question" do
+  describe "when a user likes the question when the question is approved" do
     user = User.create
-    question = Question.new(body:"Hola?",approved: true)
-    user.likes question
+    question = Question.create(body:"Hola?",approved: true)
+    user.like question
+    it "should increase the votes count" do
+      expect(question.votes.up.count).to eq(1)
+    end
+  end
+  
+  describe "when a user likes the question when the question is not approved" do
+    user = User.create
+    question = Question.create(body:"Hola?",approved: false)
+    user.like question
     it "should increase the votes count" do
       expect(question.votes.up.count).to eq(0)
     end

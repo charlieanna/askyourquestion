@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe VotesController do
   before do
-    @question = Question.create(body:"Will IdleCampus ever be a company?")
+    @question = Question.create(body:"Will IdleCampus ever be a company?",approved: true)
     @user = User.new_guest
     if @user.save
       session[:user_id] = @user.id
@@ -21,7 +21,7 @@ describe VotesController do
   describe 'DELETE #destroy' do
     context "decreases the number of likes of the question" do
       it "returns to the root_path" do
-        @user.likes @question
+        @user.like @question
         delete :destroy,question_id: @question
         expect(@question.likes.count).to be(0)
       end

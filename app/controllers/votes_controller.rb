@@ -2,13 +2,13 @@ class VotesController < ApplicationController
   
   
   def create
-    current_user.likes question
+    current_user.like question
     alert_client
     redirect_to root_path, notice: "Now following user."
   end
   
   def destroy
-    current_user.dislikes question
+    current_user.dislike question
     alert_client
     redirect_to root_path, notice: "No longer following user."
   end

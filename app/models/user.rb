@@ -19,4 +19,23 @@ class User < ActiveRecord::Base
   def username
     guest ? "Guest" : name
   end
+  
+  def like(question)
+    if question.approved?
+      likes(question)
+      true
+    else
+      false
+    end
+  end
+  def dislike(question)
+    if question.approved?
+      dislikes(question)
+      true
+    else
+      false
+    end
+  end
+  
+  private :likes,:dislikes
 end
