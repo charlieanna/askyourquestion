@@ -16,5 +16,5 @@ Askyourquestion::Application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
   resource :session,only: [:create]
-  
+  resources :subscribers,only: [:new,:create,:destroy]
 end

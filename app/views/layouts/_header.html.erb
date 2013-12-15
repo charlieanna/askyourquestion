@@ -3,7 +3,7 @@
   <% if current_user.guest? %>
      <%= link_to "Sign in with Twitter", "/auth/twitter"%>
      <%= link_to "Create an event",new_admin_registration_path %>
-     <%= link_to "Join an event",  %>
+     <%= link_to "Join an event", new_subscriber_path  %>
      <%= link_to "Sign in with Facebook", "/auth/facebook"%>
    <% else %>
      <%= link_to "Sign out", logout_path,method: :delete %>
