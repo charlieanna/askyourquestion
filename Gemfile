@@ -21,6 +21,8 @@ group :test do
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
 end
+gem 'pusher'
+gem 'websocket-rails'
 gem 'debugger', group: [:development, :test]
 gem 'font-awesome-sass'
 gem 'bootstrap-sass', '~> 3.0.3.0'

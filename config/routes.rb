@@ -4,7 +4,7 @@ Askyourquestion::Application.routes.draw do
   devise_for :users
   root :to => "homes#show"
    get "home" =>  "homes#show"
-  resources :questions, only: [:create] do
+  resources :questions, only: [:create,:index] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'
   end
@@ -13,4 +13,5 @@ Askyourquestion::Application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
   resource :session,only: [:create]
+  
 end
