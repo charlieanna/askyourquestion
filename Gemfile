@@ -16,12 +16,13 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'capybara','1.1.4'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
+  gem 'capybara', "~> 2.1.0"
+  gem "poltergeist", "~> 1.4.1"
 end
 gem 'rails_admin'
 gem 'dotenv-rails', :groups => [:development, :test]
