@@ -23,6 +23,7 @@ group :test do
   gem "launchy", "~> 2.3.0"
 end
 gem 'pusher'
+gem 'newrelic_rpm'
 gem 'websocket-rails'
 gem 'debugger', group: [:development, :test]
 gem 'font-awesome-sass'
