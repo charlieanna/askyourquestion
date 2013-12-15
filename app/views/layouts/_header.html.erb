@@ -1,10 +1,11 @@
 <div id="user_nav" style="margin-bottom:2%" data-role="nav-links">
   Signed in as <%= current_user.username %>
   <% if current_user.guest? %>
-     <%= link_to "Sign in with Twitter", "/auth/twitter"%>
+    
      <%= link_to "Create an event",new_admin_registration_path %>
      <%= link_to "Join an event", new_subscriber_path  %>
-     <%= link_to "Sign in with Facebook", "/auth/facebook"%>
+     <%= link_to( image_tag("facebook.png"), "/auth/facebook")%>
+     <%= link_to( image_tag("twitter.png"), "/auth/twitter")%>
    <% else %>
      <%= link_to "Sign out", logout_path,method: :delete %>
    <% end %>
