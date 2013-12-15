@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   it {should_not respond_to(:likes)}
   it {should respond_to(:like)}
+  # > it { should have_many(:questions)}
   
   describe "#likes" do
     it "should return false if the question is not approved" do

@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :users
-  has_many :questions,through: :users
+  has_many :questions
   belongs_to :admin
   validates :code, presence: true,uniqueness: true, length: { maximum: 6,minimum: 6 }
   validates :name,presence: true 

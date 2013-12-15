@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
  #         :recoverable, :rememberable, :trackable, :validatable
   acts_as_voter
   belongs_to :event
+  has_many :questions
   def self.create_with_omniauth(auth)
     User.create!(
       :provider => auth["provider"],
