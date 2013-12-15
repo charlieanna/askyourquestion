@@ -7,7 +7,7 @@
  <%= f.submit "Ask",class: "btn btn-primary"%>
 <% end %>
  
-<div class="questions">
+<ul class="questions" style="list-style-type: none;">
   
   <%= render :partial => 'questions/question', :collection => @questions.sort!{|a,b| a.votes.up.count <=> b.votes.up.count}.reverse! %>
-</div>
+</ul>
