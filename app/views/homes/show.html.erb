@@ -1,5 +1,5 @@
 
-<%= form_for @question do |f|%>
+<%= form_for @question,remote: true do |f|%>
 <div class="col-xs-9">
   <%= f.label :body %>
   <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
