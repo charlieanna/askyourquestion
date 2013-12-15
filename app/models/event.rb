@@ -7,11 +7,15 @@ class Event < ActiveRecord::Base
   after_initialize :generate_code
   
   def generate_code
+    self.code ||= get_unique_code if self.new_record?
+  end
+  
+  def get_unique_code
     new_event_code = generate_event_code
     while Event.exists?(code: new_event_code)
       new_event_code = generate_event_code
     end
-    self.code = new_event_code
+    return new_event_code
   end
 
   # Generates a random string from a set of easily readable characters

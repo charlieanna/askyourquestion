@@ -1,16 +1,18 @@
 class VotesController < ApplicationController
-  
-  
   def create
+    question = Question.find(params[:question_id])
+    event = question.event
     current_user.like question
+    @questions = event.questions
     alert_client
-    redirect_to root_path, notice: "Now following user."
   end
   
   def destroy
+    question = Question.find(params[:question_id])
     current_user.dislike question
+    event = question.event
+    @questions = event.questions
     alert_client
-    redirect_to root_path, notice: "No longer following user."
   end
   
   private

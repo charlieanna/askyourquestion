@@ -4,14 +4,19 @@ Askyourquestion::Application.routes.draw do
   
   get "votes/create"
   get "votes/destroy"
-  resources :events,only: [:new,:create]
+  resources :events,only: [:new,:create,:show] do
+    resources :questions, only: [:create] do
+      post 'vote' => 'votes#create'
+      delete 'vote' => 'votes#destroy'
+    end
+  end
   resources :users do
     post 'join' => 'subscribers#create'
     # delete 'follow' => 'following_relationships#destroy'
   end
   root :to => "homes#show"
    get "home" =>  "homes#show"
-  resources :questions, only: [:create,:index] do
+  resources :questions, only: [:create] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'
   end

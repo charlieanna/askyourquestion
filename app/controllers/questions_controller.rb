@@ -1,16 +1,19 @@
 class QuestionsController < ApplicationController
   def create 
-    @question  = Question.new(question_params)
+    event = Event.find(params[:event_id])
+    @question  = event.questions.new(question_params)
+    @question.approved = true
     @question.save
     Pusher['test_channel'].trigger('my_event', {
          message: 'hello world'
        })
-    redirect_to homes_path
+    @questions = event.questions
   end
   
-  def index
-    @questions = Question.all
-  end
+  # def index
+ #    event = Event.find(params[:id])
+ #    @questions = event.questions
+ #  end
 
   private
 
