@@ -10,10 +10,10 @@ class QuestionsController < ApplicationController
     @questions = event.questions
   end
   
-  # def index
- #    event = Event.find(params[:id])
- #    @questions = event.questions
- #  end
+  def index
+    event = Event.find(params[:event_id])
+    @questions = event.questions
+  end
 
   private
 

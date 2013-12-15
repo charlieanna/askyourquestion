@@ -19,8 +19,7 @@
       var pusher = new Pusher('4daba8eb6336507df8cf');
       var channel = pusher.subscribe('test_channel');
       channel.bind('my_event', function(data) {
-        $.get( "/questions", function( data ) {
-          
+       $.get( window.location.pathname+"/questions", function( data ) {
         });
       });
     </script>

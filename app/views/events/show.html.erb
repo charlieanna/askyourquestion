@@ -1,7 +1,6 @@
 
 <%= form_for :question, :url => event_questions_path(@event),remote: true do |f| %>
 <div class="col-xs-9">
-  <%= f.label :body %>
   <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
  
 </div>

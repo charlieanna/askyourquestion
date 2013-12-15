@@ -5,7 +5,7 @@ Askyourquestion::Application.routes.draw do
   get "votes/create"
   get "votes/destroy"
   resources :events,only: [:new,:create,:show] do
-    resources :questions, only: [:create] do
+    resources :questions, only: [:create,:index] do
       post 'vote' => 'votes#create'
       delete 'vote' => 'votes#destroy'
     end

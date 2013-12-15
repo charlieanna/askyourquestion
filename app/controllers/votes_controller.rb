@@ -4,7 +4,7 @@ class VotesController < ApplicationController
     event = question.event
     current_user.like question
     @questions = event.questions
-    alert_client
+    alert_client(event)
   end
   
   def destroy
@@ -12,7 +12,7 @@ class VotesController < ApplicationController
     current_user.dislike question
     event = question.event
     @questions = event.questions
-    alert_client
+    alert_client(event)
   end
   
   private
@@ -21,9 +21,9 @@ class VotesController < ApplicationController
      @_question ||= Question.find(params[:question_id])
   end
   
-  def alert_client
+  def alert_client(event)
     Pusher['test_channel'].trigger('my_event', {
-         message: 'hello world'
+         event_id: event.id
        })
   end
 end
