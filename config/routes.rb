@@ -1,4 +1,7 @@
 Askyourquestion::Application.routes.draw do
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   get "votes/create"
   get "votes/destroy"
   devise_for :users

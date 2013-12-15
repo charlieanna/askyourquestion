@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, :registerable,
  #         :recoverable, :rememberable, :trackable, :validatable
   acts_as_voter
-  
+  belongs_to :event
   def self.create_with_omniauth(auth)
     User.create!(
       :provider => auth["provider"],

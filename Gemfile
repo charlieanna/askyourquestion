@@ -14,7 +14,8 @@ group :production do
 end
 
 group :test do
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'capybara','1.1.4'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
@@ -22,6 +23,7 @@ group :test do
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
 end
+gem 'rails_admin'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem "bullet", :group => "development"
 gem 'rack-mini-profiler'
