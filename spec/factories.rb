@@ -1,7 +1,7 @@
 FactoryGirl.define do
-	factory :event do
-	  name "Oracle"
-    code { "dsfsdf" }
-	end
+  factory :admin do
+    email "admin@admin.com"
+    password "aaaaaaaa"
+    password_confirmation { "aaaaaaaa" }
+  end
 end
-

@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
   def create
+    puts "Ankudkjndskjgndkjgndfkjg"
     @question = Question.find(params[:question_id])
     event = question.event
     old_votes = question.votes.up.count
     current_user.like question
     new_votes = question.votes.up.count
+    p "votes #{new_votes}"
     questions = event.questions
     questions = questions.sort!{|a,b| a.votes.up.count <=> b.votes.up.count}.reverse!
     votes = questions.map { |q| q.votes.up.count }

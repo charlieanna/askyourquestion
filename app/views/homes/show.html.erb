@@ -3,6 +3,8 @@
   <% if current_admin.event.nil?%>
     <%= link_to "Create an event",new_event_path,class:"btn btn-primary" %>
   <% else %>
+  <div id="name"><%= current_admin.event_name %></div>
+  <div id="code"><%= current_admin.event_code %></div>
   <div class="questions">
     <%= render current_admin.event.questions %>
   </div>
