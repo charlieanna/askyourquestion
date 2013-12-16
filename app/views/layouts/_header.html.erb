@@ -11,7 +11,7 @@
     </div>
      <!-- new_admin_registration_path -->
      <div class="btn-group">
-      <%= link_to "Sign up to create an event.", new_admin_registration_path ,class:"btn btn-primary" %>
+      <%= link_to "Sign up to create an event", new_admin_registration_path ,class:"btn btn-primary" %>
       <%= link_to "Admin Login", new_admin_session_path ,class:"btn btn-primary" %>
     </div>
     
@@ -21,6 +21,7 @@
     </div>
   <% else %>
     Signed in as <%= current_user.username %>
+    <%= link_to "Join an event", new_subscriber_path ,class:"btn btn-primary" %>
     <%= link_to "Sign out", logout_path,method: :delete %> 
   <% end %>
 </div>

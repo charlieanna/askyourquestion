@@ -1,3 +1,10 @@
+
 <% if admin_signed_in? %>
-  <%= render current_admin.event.questions %>
+  <% if current_admin.event.nil?%>
+    <%= link_to "Create an event",new_event_path,class:"btn btn-primary" %>
+  <% else %>
+  <div class="questions">
+    <%= render current_admin.event.questions %>
+  </div>
+  <% end %>
 <% end %>

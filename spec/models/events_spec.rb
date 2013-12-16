@@ -9,6 +9,35 @@ describe Event do
   it { should validate_presence_of(:code) }
   it { should validate_presence_of(:name) }
   it { should belong_to(:admin) }
+  
+  describe "event is created" do
+    it "generates a code" do
+      event = Event.new
+      event.name = "Oracle"
+      event.save
+      expect(event.code).to_not be_nil
+    end 
+    
+    it "with a unique code" do
+      event = Event.new
+      event.name = "Oracle"
+      event.save
+      event.code = "ABCDEF"
+      event.save
+      
+      event1 = Event.new
+      event1.name = "Oracle"
+      event1.save
+      event1.code = "ABCDEF"
+      expect(event1).to_not be_valid
+      
+      event2 = Event.new
+      event2.name = "Oracle"
+      event2.save
+      expect(event2).to be_valid
+    end
+    
+  end
   describe "when code is too long" do
     before do
       @event = Event.new

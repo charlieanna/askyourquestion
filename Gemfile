@@ -24,7 +24,8 @@ group :test do
   gem 'capybara', "~> 2.1.0"
   gem "capybara-webkit"
   gem "poltergeist", "~> 1.4.1"
-   gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
 end
 gem 'rails_admin'
 gem 'dotenv-rails', :groups => [:development, :test]
