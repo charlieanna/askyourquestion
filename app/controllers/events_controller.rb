@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!,only: :create
   def new
     @event = Event.new
   end
