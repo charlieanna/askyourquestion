@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  
   def create 
     event = Event.find(params[:event_id])
     @question  = event.questions.new(question_params)

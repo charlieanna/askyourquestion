@@ -7,10 +7,10 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/poltergeist'
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
-  end
+  Capybara.javascript_driver = :webkit
+  # Capybara.register_driver :poltergeist do |app|
+  #   Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
+  # end
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -47,6 +47,21 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
+    #fixes issues with capybara not detecting db changes made during tests
+     config.use_transactional_fixtures = false
+
+     config.before :each do
+       if Capybara.current_driver == :rack_test
+         DatabaseCleaner.strategy = :transaction
+       else
+         DatabaseCleaner.strategy = :truncation
+       end
+       DatabaseCleaner.start
+     end
+
+     config.after do
+       DatabaseCleaner.clean
+     end  
   end
 end
 

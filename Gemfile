@@ -22,7 +22,9 @@ group :test do
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
   gem 'capybara', "~> 2.1.0"
+  gem "capybara-webkit"
   gem "poltergeist", "~> 1.4.1"
+   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 gem 'rails_admin'
 gem 'dotenv-rails', :groups => [:development, :test]

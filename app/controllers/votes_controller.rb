@@ -15,9 +15,6 @@ class VotesController < ApplicationController
     else
       @new_index = insert_index(new_votes,votes)
     end
-    p votes
-    p @old_index
-    p @new_index
     alert_client(event)
   end
   
@@ -37,9 +34,6 @@ class VotesController < ApplicationController
     else
       @new_index = dinsert_index(new_votes,votes)
     end
-    p votes
-    p @old_index
-    p @new_index
     alert_client(event)
   end
   
