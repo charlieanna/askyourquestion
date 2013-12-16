@@ -8,17 +8,20 @@ Askyourquestion::Application.routes.draw do
     resources :questions, only: [:create,:index] do
       post 'vote' => 'votes#create'
       delete 'vote' => 'votes#destroy'
+      post 'approval' => 'approvals#create'
+      delete 'approval' => 'approvals#destroy'
     end
   end
   resources :users do
     post 'join' => 'subscribers#create'
-    # delete 'follow' => 'following_relationships#destroy'
   end
   root :to => "homes#show"
    get "home" =>  "homes#show"
   resources :questions, only: [:create] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'
+    post 'approval' => 'approvals#create'
+    delete 'approval' => 'approvals#destroy'
   end
   resource :homes, only: [:show]
   get  'auth/:provider/callback' => 'sessions#create',:as => 'login'

@@ -2,9 +2,15 @@
   <%= div_for question do %>
 <div class="well well-lg" style="margin-top:3%">
   <div class="row question">
+    <% if admin_signed_in?%>
+    <div class='col-md-1 vote_button'>
+      <%= approve_button question %>
+    </div>
+    <% else %>
     <div class='col-md-1 vote_button'>
       <%= vote_button question %>
     </div>
+    <% end %>
     <div class='col-md-3 body'>
       <%= question.body %>
     </div>

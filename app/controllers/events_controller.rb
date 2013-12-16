@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(params.require(:event).permit(:name))
+    current_admin.event = @event
     @event.save
     redirect_to root_path,notice: "#{@event.name} created with code #{@event.code}"  
   end
