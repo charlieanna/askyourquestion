@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require angular
+//= require angular-animate
 //= require angular-resource
-//= require angular-strap
 //= require_tree .
-//= require websocket_rails/main
+
 

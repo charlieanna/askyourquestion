@@ -1,3 +1,3 @@
 var app, re;
 
-app = angular.module("auq", ['ngResource', '$strap.directives']);
+app = angular.module('App', ['ngAnimate']);
