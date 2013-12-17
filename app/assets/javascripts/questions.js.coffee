@@ -15,7 +15,6 @@
         _method: "create"
     ).done (data) ->
       ind = $scope.questions.indexOf(question)
-      console.log data.question
       question = data.question
       $scope.questions[ind] = question
       $scope.$digest()
@@ -30,7 +29,6 @@
         _method: "delete"
     ).done (data)->
       ind = $scope.questions.indexOf(question)
-      console.log data.question
       question = data.question
       $scope.questions[ind] = question
       $scope.$digest()

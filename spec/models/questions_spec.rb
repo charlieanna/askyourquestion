@@ -17,9 +17,8 @@ describe Question do
   describe "when a user likes the question when the question is approved" do
     user = User.create
     question = Question.create(body:"Hola?",approved: true)
-    user.like question
     it "should increase the votes count" do
-      expect(question.votes.up.count).to eq(1)
+      expect{user.like question}.to change{question.votes.up.count}.by(1)
     end
   end
   

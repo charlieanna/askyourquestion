@@ -51,9 +51,9 @@ feature "Admin can signup" do
           click_button "Join Event"
           # page.should have_css "#question_1 .votes",text: "0 votes"
           click_link "Up"
-           # open_page
+          open_page
           page.should have_css "#question_1 .votes",text: "1 vote"
-          
+          open_page
         end
         scenario "which sends the question to the admin for approval" do
           sign_in_admin(admin)
@@ -78,8 +78,7 @@ feature "Admin can signup" do
           click_link "Up"
            # open_page
           page.should have_css "#question_1 .votes",text: "0 votes"
-          open_page
-        end
+         end
       end
     end
   end

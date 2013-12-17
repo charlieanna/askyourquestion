@@ -14,31 +14,3 @@
 
 
 
-<ul ng-controller="QuestionsCtrl" ng-init="get()" class="nav nav-pills nav-stacked">
- 
-  <li class="row question animate-repeat" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
-      <!-- <div class='vote_button' ng-show="!question.liked">  -->
-   
- 
-  
-     
-    <div>
-      
-      <button ng-click="up(question)" class="btn btn-success" id="bluebutton" ng-show="!question.liked">Up
-      </button>
-    <!-- </div> -->
-     <!-- <div class='vote_button' ng-show="question.liked"> </div> -->
-      <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked">Down</button>
-      {{question.body }} {{question.votes}}
-    </div>
-   
-  </li>
-  <form ng-submit="addQuestion()">
-    <input type="text" ng-model="question.body" placeholder="Enter a question here">
-    <input type="text" ng-model="question.votes" placeholder="Enter votes here">
-    <input type="submit" value="Ask">
-  </form>
-</ul>
-
-
-
