@@ -1,14 +1,12 @@
 
 <%= form_for :question, :url => event_questions_path(@event),remote: true do |f| %>
 <div class="col-xs-9">
-  <%= f.label :body %>
-  <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control" %>
+  <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control",id:"body" %>
  
 </div>
  <%= f.submit "Ask",class: "btn btn-primary"%>
 <% end %>
  
-<ul class="questions" style="list-style-type: none;">
-  
-  <%= render :partial => 'questions/question', :collection => @questions.sort!{|a,b| a.votes.up.count <=> b.votes.up.count}.reverse! %>
+<ul class="questions">
+  <%= render :partial => 'questions/questions', :locals => { :event => @event } %>
 </ul>

@@ -1,4 +1,10 @@
-@QuestionsCtrl = ["$scope","$http", ($scope, $http) ->
+@QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,$fromoutside) ->
+  $window.channel.bind "my_event", (data) ->
+    console.log(data)
+    question = data.question.question
+    $scope.questions.push question
+    $scope.$digest()
+  
   $scope.questions = []
   $scope.predicate = '-votes'
   $scope.addQuestion = ->
@@ -34,9 +40,9 @@
       $scope.$digest()
    
     
-  $scope.get = ->
+  $scope.get =  (event_id) ->
     
-    url = "/questions.json"
+    url = "/events/"+event_id+"/questions.json"
     $http(
       method: "GET"
       url: url

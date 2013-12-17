@@ -3,16 +3,17 @@ class QuestionsController < ApplicationController
   def create 
     event = Event.find(params[:event_id])
     @question  = event.questions.new(question_params)
+    @question.approved = true # comment this out for production
     @question.save
+    serializer = QuestionSerializer.new @question
     Pusher['test_channel'].trigger('my_event', {
-         message: 'hello world'
+         question: serializer
        })
-    @questions = event.questions
   end
   
   def index
-    # event = Event.find(params[:event_id])
-    @questions = Question.all
+    event = Event.find(params[:event_id])
+    @questions = event.questions
     respond_with @questions
   end
   
@@ -22,6 +23,7 @@ class QuestionsController < ApplicationController
   end
 
   private
+ 
 
   def question_params
     params.require(:question).permit(:body)
