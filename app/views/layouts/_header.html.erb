@@ -1,3 +1,4 @@
+
 <div style="margin-bottom:2%" data-role="nav-links">
   <% if admin_signed_in? %>
     Logged in as <strong><%= current_admin.email %></strong>.
@@ -6,13 +7,13 @@
   <% elsif current_user.guest?%>
     Signed in as <%= current_user.username %>
     <div class="btn-group">
-      <%= link_to "Create an event",new_event_path,class:"btn btn-primary" %>
-      <%= link_to "Join an event", new_subscriber_path ,class:"btn btn-primary" %>
+      <%= link_to "Create an event",new_event_path,class:"btn btn-block btn-danger" %>
+      <%= link_to "Join an event", new_subscriber_path ,class:"btn btn-block btn-danger" %>
     </div>
      <!-- new_admin_registration_path -->
      <div class="btn-group">
-      <%= link_to "Sign up to create an event", new_admin_registration_path ,class:"btn btn-primary" %>
-      <%= link_to "Admin Login", new_admin_session_path ,class:"btn btn-primary" %>
+      <%= link_to "Sign up to create an event", new_admin_registration_path ,class:"btn btn-block btn-primary" %>
+      <%= link_to "Admin Login", new_admin_session_path ,class:"btn btn-block btn-primary" %>
     </div>
     
     <div class="btn-group">
@@ -22,7 +23,7 @@
   <% else %>
     Signed in as <%= current_user.username %>
     <%= link_to "Join an event", new_subscriber_path ,class:"btn btn-primary" %>
-    <%= link_to "Sign out", logout_path,method: :delete %> 
+    <%= link_to "Sign out", logout_path,method: :delete,class:"btn btn-block btn-danger" %> 
   <% end %>
 </div>
 

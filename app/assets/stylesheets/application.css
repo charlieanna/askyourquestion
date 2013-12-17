@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require font-awesome
+ *= bootstrap.min
  *= require animate
  *= require_tree .
  */
