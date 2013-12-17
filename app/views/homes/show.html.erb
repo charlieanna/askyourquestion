@@ -5,8 +5,40 @@
   <% else %>
   <div id="name"><%= current_admin.event_name %></div>
   <div id="code"><%= current_admin.event_code %></div>
-  <div class="questions">
+  <ul class="questions">
     <%= render current_admin.event.questions %>
-  </div>
+  </ul>
   <% end %>
 <% end %>
+
+
+<ul ng-controller="QuestionsCtrl" ng-init="get()">
+ 
+  <div class="row question" ng-repeat="question in questions | orderBy:predicate:reverse">
+    <button ng-click="up()" class="btn btn-success pull-left" id="bluebutton"><i class="fa fa-thumbs-down"></i>Up
+    </button>
+    <button class="btn btn-success pull-left" ng-click="down(question)"><i class="fa fa-thumbs-down"></i>Down</button>
+    <div class='col-md-1 vote_button' ng-show="question.liked">
+      <a class="btn btn-success pull-left" data-method="delete" data-remote="true" href="/questions/{{question.id}}/vote" id="bluebutton" rel="nofollow"><i class="fa fa-thumbs-down"></i>Down</a>
+    </div>
+    <div class='col-md-1 vote_button' ng-show="!question.liked">
+      <a class="btn btn-success pull-left" data-method="post" data-remote="true"  href="/questions/{{question.id}}/vote" id="bluebutton" rel="nofollow"><i class="fa fa-thumbs-up"></i>Up</a>
+    </div>
+    
+    <div class='col-md-3 body'>
+      {{question.body }}
+    </div>
+    <div class='col-md-4 votes'>
+    
+     
+       <td>{{question.votes}}</td>
+        <%= image_tag("vote.png", :size => "50x50", :alt => "Edit Entry") %>
+      
+    </div>
+  </div>
+  <form ng-submit="addQuestion()">
+    <input type="text" ng-model="question.body" placeholder="Enter a question here">
+    <input type="text" ng-model="question.votes" placeholder="Enter votes here">
+    <input type="submit" value="Ask">
+  </form>
+</ul>

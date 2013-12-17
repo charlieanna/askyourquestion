@@ -27,6 +27,9 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
 end
+gem 'active_model_serializers'
+gem 'gon'
+gem 'angularjs-rails'
 gem 'rails_admin'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem "bullet", :group => "development"

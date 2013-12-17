@@ -17,7 +17,7 @@ Askyourquestion::Application.routes.draw do
   end
   root :to => "homes#show"
    get "home" =>  "homes#show"
-  resources :questions, only: [:create] do
+  resources :questions, only: [:create,:index] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'
     post 'approval' => 'approvals#create'

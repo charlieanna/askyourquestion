@@ -16,6 +16,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -33,6 +35,7 @@ GEM
       tzinfo (~> 0.3.37)
     acts_as_votable (0.8.0)
     addressable (2.3.5)
+    angularjs-rails (1.2.5)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -103,6 +106,9 @@ GEM
     font-awesome-sass (4.0.2)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     guard (2.2.5)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -322,7 +328,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   acts_as_votable (~> 0.8.0)
+  angularjs-rails
   bootstrap-sass (~> 3.0.3.0)
   bullet
   capybara (~> 2.1.0)
@@ -335,6 +343,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails (~> 4.0)
   font-awesome-sass
+  gon
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
   jbuilder (~> 1.2)
