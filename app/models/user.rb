@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
   
   def like(question)
-    if question.approved?
+    if true#question.approved?
       likes(question)
       true
     else
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     end
   end
   def dislike(question)
-    if question.approved?
+    if true#question.approved?
       dislikes(question)
       true
     else

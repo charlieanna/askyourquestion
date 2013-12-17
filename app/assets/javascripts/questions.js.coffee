@@ -7,22 +7,34 @@
     $scope.questions.push(question)
     $scope.question = ""
   $scope.up = (question) ->
-    question.liked = true
-    $.ajax
+    $.ajax(
       url: "/questions/"+question.id+"/vote"
       type: "post"
-      dataType: "json"
+      dataType:'json'
       data:
         _method: "create"
+    ).done (data) ->
+      ind = $scope.questions.indexOf(question)
+      console.log data.question
+      question = data.question
+      $scope.questions[ind] = question
+      $scope.$digest()
+   
+        
   $scope.down = (question) ->
-    # alert $scope.questions.indexOf(question)
-    question.liked = false
-    # $scope.questions[$scope.questions.indexOf(question)] = question
-    $.ajax
+   $.ajax(
       url: "/questions/"+question.id+"/vote"
       type: "post"
+      dataType:'json'
       data:
         _method: "delete"
+    ).done (data)->
+      ind = $scope.questions.indexOf(question)
+      console.log data.question
+      question = data.question
+      $scope.questions[ind] = question
+      $scope.$digest()
+   
     
   $scope.get = ->
     
