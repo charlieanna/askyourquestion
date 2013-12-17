@@ -14,7 +14,7 @@
 
 
 
-<ul ng-controller="QuestionsCtrl" ng-init="get()" class="nav nav-pills nav-stacked">
+<ul ng-controller="QuestionsCtrl" ng-init="get()">
  
   <li class="row question animate-repeat" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
       <!-- <div class='vote_button' ng-show="!question.liked">  -->
