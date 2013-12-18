@@ -3,14 +3,23 @@ class VotesController < ApplicationController
   def create
     event = question.event
     current_user.like question
-    alert_client(event)
+    serializer = QuestionSerializer.new question
+    puts serializer
+    Pusher['test_channel'].trigger('my_event', {
+         question: serializer,
+         action: "like"
+       })
     redirect_to question_path(question)
   end
   
   def destroy
     event = question.event
     current_user.dislike question
-    alert_client(event)
+    serializer = QuestionSerializer.new question
+    Pusher['test_channel'].trigger('my_event', {
+         question: serializer,
+         action: "dislike"
+       })
     redirect_to question_path(question)
   end
   
@@ -18,11 +27,5 @@ class VotesController < ApplicationController
   
   def question
      @_question ||= Question.find(params[:question_id])
-  end
-  
-  def alert_client(event)
-    Pusher['test_channel'].trigger('my_event', {
-         event_id: event.id
-       })
   end
 end

@@ -1,7 +1,8 @@
 require 'spec_helper'
-
-feature "Admin can signup" do
+feature "Admin" do
   let(:admin) { create(:admin)  }
+context "can signup" do
+  
   scenario 'with valid email address and password' do
     sign_up_admin
     page.should have_content("Welcome! You have signed up successfully. Logged in as admin@admin.com.")
@@ -9,15 +10,34 @@ feature "Admin can signup" do
     page.should have_link "Edit profile"
     page.should have_link "Create an event"
   end
+end
+
+context "after signup" do
   
-  context "create an event." do
+  scenario 'can logout' do
+    sign_up_admin
+    click_link "Logout"
+    page.should have_title "Ask your question!" 
+    page.should have_css "[data-role='nav-links']"
+    page.should have_css('a img[src="/assets/twitter.png"]')
+    page.should have_css('a img[src="/assets/facebook.png"]')
+    page.should have_content "Signed in as Guest"
+    page.should have_link "Admin Login"
+    page.should have_link "Sign up to create an event"
+    page.should have_link "Create an event"
+    page.should have_link "Join an event"
+  end
+end
+  
+  context "create an event" do
     scenario "with a name" do
       sign_in_admin(admin)
       create_event
+      code = page.find('div#code').text  
+      page.should have_content "Oracle created with code #{code}"
       page.should have_css ".questions"
     end
-    
-    context "guest can join the event" do
+    context "and guest can join the event" do
       scenario "with a valid event code" do
         sign_in_admin(admin)
         create_event
@@ -28,61 +48,78 @@ feature "Admin can signup" do
         click_button "Join Event"
         page.should have_content "Event joined. You can ask your questions and vote for them now."
       end
-      
-      context "and then ask a question",js: true do
-        scenario "which sends the question to the admin for approval" do
-          sign_in_admin(admin)
-          create_event
-          code = page.find('div#code').text  
-          click_link "Logout"
-          click_link "Join an event"
-          fill_in "Code",with: code
-          click_button "Join Event"
-          fill_in "Body",with: "Hi how are you?"
-          click_button "Ask"
-          sign_in_admin(admin)
-          page.should have_content "Hi how are you?"
-          page.should have_link "Approve"
-          page.should have_link "Reject"
-          click_link "Approve"
-          click_link "Logout"
-          click_link "Join an event"
-          fill_in "Code",with: code
-          click_button "Join Event"
-          # page.should have_css "#question_1 .votes",text: "0 votes"
-          click_link "Up"
-          open_page
-          page.should have_css "#question_1 .votes",text: "1 vote"
-          open_page
-        end
-        scenario "which sends the question to the admin for approval" do
-          sign_in_admin(admin)
-          create_event
-          code = page.find('div#code').text  
-          click_link "Logout"
-          click_link "Join an event"
-          fill_in "Code",with: code
-          click_button "Join Event"
-          fill_in "Body",with: "Hi how are you?"
-          click_button "Ask"
-          sign_in_admin(admin)
-          page.should have_content "Hi how are you?"
-          page.should have_link "Approve"
-          page.should have_link "Reject"
-          click_link "Reject"
-          click_link "Logout"
-          click_link "Join an event"
-          fill_in "Code",with: code
-          click_button "Join Event"
-          # page.should have_css "#question_1 .votes",text: "0 votes"
-          click_link "Up"
-           # open_page
-          page.should have_css "#question_1 .votes",text: "0 votes"
-         end
-      end
+    end
+  end
+  
+  context "can logout" do
+    scenario "and be shown to signin again" do
+      sign_in_admin(admin)
+      click_link "Logout"
+      page.should have_title "Ask your question!" 
+      page.should have_css "[data-role='nav-links']"
+      page.should have_css('a img[src="/assets/twitter.png"]')
+      page.should have_css('a img[src="/assets/facebook.png"]')
+      page.should have_content "Signed in as Guest"
+      page.should have_link "Admin Login"
+      page.should have_link "Sign up to create an event"
+      page.should have_link "Create an event"
+      page.should have_link "Join an event"
     end
   end
 end
+#       
+#       context "and then ask a question",js: true do
+#         scenario "which sends the question to the admin for approval" do
+#           sign_in_admin(admin)
+#           create_event
+#           code = page.find('div#code').text  
+#           click_link "Logout"
+#           click_link "Join an event"
+#           fill_in "Code",with: code
+#           click_button "Join Event"
+#           fill_in "body",with: "Hi how are you?"
+#           click_button "Ask"
+#           sign_in_admin(admin)
+#           page.should have_content "Hi how are you?"
+#           page.should have_button "Approve"
+#           page.should have_button "Reject"
+#           click_button "Approve"
+#           click_link "Logout"
+#           click_link "Join an event"
+#           fill_in "Code",with: code
+#           click_button "Join Event"
+#           # page.should have_css "#question_1 .votes",text: "0 votes"
+#           click_button "Up"
+#           page.should have_content "Hi how are you? 0"
+#         end
+#         scenario "which sends the question to the admin for approval" do
+#           sign_in_admin(admin)
+#           create_event
+#           code = page.find('div#code').text  
+#           click_link "Logout"
+#           click_link "Join an event"
+#           fill_in "Code",with: code
+#           click_button "Join Event"
+#           fill_in "body",with: "Hi how are you?"
+#           click_button "Ask"
+#           sign_in_admin(admin)
+#           page.should have_content "Hi how are you?"
+#           page.should have_button "Approve"
+#           page.should have_button "Reject"
+#           click_button "Reject"
+#           click_link "Logout"
+#           click_link "Join an event"
+#           fill_in "Code",with: code
+#           click_button "Join Event"
+#           # page.should have_css "#question_1 .votes",text: "0 votes"
+#           click_button "Up"
+#            # open_page
+#           page.should have_content "Hi how are you? 0"
+#          end
+#       end
+#     end
+#   end
+# end
 
 def sign_up_admin 
   visit root_path

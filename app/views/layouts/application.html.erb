@@ -8,21 +8,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
  
-    <script type="text/javascript">
-     
-      Pusher.log = function(message) {
-        if (window.console && window.console.log) {
-          window.console.log(message);
-        }
-      };
-
-      // var pusher = new Pusher('4daba8eb6336507df8cf');
- //      var channel = pusher.subscribe('test_channel');
- //      channel.bind('my_event', function(data) {
- //       $.get( window.location.pathname+"/questions", function( data ) {
- //        });
- //      });
-    </script>
+  
      <%= favicon_link_tag %>
 </head>
 

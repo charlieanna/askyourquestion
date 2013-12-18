@@ -8,8 +8,8 @@ Askyourquestion::Application.routes.draw do
     resources :questions, only: [:create,:index] do
       post 'vote' => 'votes#create'
       delete 'vote' => 'votes#destroy'
-      post 'approval' => 'approvals#create'
-      delete 'approval' => 'approvals#destroy'
+      post 'approve' => 'approvals#create'
+      delete 'approve' => 'approvals#destroy'
     end
   end
   resources :users do
@@ -20,8 +20,8 @@ Askyourquestion::Application.routes.draw do
   resources :questions, only: [:create,:index,:show] do
     post 'vote' => 'votes#create'
     delete 'vote' => 'votes#destroy'
-    post 'approval' => 'approvals#create'
-    delete 'approval' => 'approvals#destroy'
+    post 'approve' => 'approvals#create'
+    delete 'approve' => 'approvals#destroy'
   end
   resource :homes, only: [:show]
   get  'auth/:provider/callback' => 'sessions#create',:as => 'login'

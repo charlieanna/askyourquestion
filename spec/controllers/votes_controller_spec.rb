@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe VotesController do
   before do
+    
     @event = Event.create(name:"Amazon")
     @question = @event.questions.create(body:"Will IdleCampus ever be a company?",approved: true)
     @user = User.new_guest
@@ -28,4 +29,7 @@ describe VotesController do
       end
     end
   end
+end
+def current_user
+  User.create()
 end

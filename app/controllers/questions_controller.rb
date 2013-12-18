@@ -3,11 +3,12 @@ class QuestionsController < ApplicationController
   def create 
     event = Event.find(params[:event_id])
     @question  = event.questions.new(question_params)
-    @question.approved = true # comment this out for production
+    # @question.approved = true # comment this out for production
     @question.save
     serializer = QuestionSerializer.new @question
     Pusher['test_channel'].trigger('my_event', {
-         question: serializer
+         question: serializer,
+         action: "add"
        })
   end
   

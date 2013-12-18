@@ -1,19 +1,27 @@
-<ul ng-controller="QuestionsCtrl" ng-init="get('<%= event.id%>')">
+<ul class="questions" ng-controller="QuestionsCtrl" ng-init="get('<%= event.id%>')">
  
-  <li class="row question animate-repeat" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
-    <div>
-      
-      <button ng-click="up(question)" class="btn btn-success" id="bluebutton" ng-show="!question.liked" style="width:6%"><i class='fa fa-thumbs-up'></i>Up
+  <li class="row question animate-repeat question" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
+    <div class="vote-buttons">
+      <% unless admin_signed_in? %>
+      <button ng-click="up(question)" class="btn btn-success" id="bluebutton" ng-show="!question.liked" style="width:8%"><i class='fa fa-thumbs-up'></i>Up
       </button>
   
-      <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked" style="width:6%"><i class='fa fa-thumbs-down'></i>Down</button>
-      {{question.body }} {{question.votes}}
+      <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked" style="width:8%"><i class='fa fa-thumbs-down'></i>Down</button>
+      <% else %>
+      <button class="btn btn-success" id="bluebutton" ng-click="approve(question)"><i class='fa fa-thumbs-up'></i>Approve </button>
+      <button class="btn btn-success"  ng-click="reject(question)" id="bluebutton"><i class='fa fa-thumbs-down'></i>Reject</button>
+  
+      <% end %>
+    </div>
+      <span class="body">
+      {{question.body }} </span>
+      <span class="votes">{{question.votes}}</span>
     </div>
    
   </li>
-  <form ng-submit="addQuestion()">
+  <!-- <form ng-submit="addQuestion()">
     <input type="text" ng-model="question.body" placeholder="Enter a question here">
     <input type="text" ng-model="question.votes" placeholder="Enter votes here">
-    <input type="submit" value="Ask">
-  </form>
+    <input type="submit" value="Test">
+  </form> -->
 </ul>
