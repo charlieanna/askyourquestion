@@ -10,13 +10,3 @@
   </ul>
   <% end %>
 <% end %>
-
-
-<%= form_for :question, :url => event_questions_path(Event.last),remote: true do |f| %>
-<div class="col-xs-9">
-  <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control",id:"body" %>
- 
-</div>
- <%= f.submit "Ask",class: "btn btn-primary"%>
-<% end %>
-</div>
