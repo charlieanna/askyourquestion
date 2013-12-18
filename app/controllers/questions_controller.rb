@@ -3,13 +3,16 @@ class QuestionsController < ApplicationController
   def create 
     event = Event.find(params[:event_id])
     @question  = event.questions.new(question_params)
-    # @question.approved = true # comment this out for production
     @question.save
     serializer = QuestionSerializer.new @question
-    Pusher['test_channel'].trigger('my_event', {
-         question: serializer,
-         action: "add"
-       })
+    @my_callback = lambda { |message| puts(message) }
+
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => :a,
+        :message  => {question:serializer,action:"add"},
+        :callback => @my_callback
+    )
   end
   
   def index

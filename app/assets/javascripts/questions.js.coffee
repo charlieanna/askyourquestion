@@ -1,19 +1,21 @@
 @QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,$fromoutside) ->
-  $window.channel.bind "my_event", (data) ->
-    # console.log data
-    question = data.question.question
-    if data.question? and data.action is "add"
-      $scope.questions.push question
-      $scope.$digest()
-    else if data.question? and (data.action is "like" or data.action is "dislike")
-      obj = $scope.objectFindByKey($scope.questions,"id",question.id)
-      obj.votes = question.votes
-      # ind = $scope.questions.indexOf(question)
-      # $scope.questions[ind] = question
-      $scope.$digest()
-  
-  
   $scope.questions = []
+  
+  $window.pubnub.subscribe
+    channel: "a"
+    message: (data) ->
+      console.log data
+      question = data.question.question
+      if data.question? and data.action is "add"
+        $scope.questions.push question
+        $scope.$digest()
+      else if data.question? and (data.action is "like" or data.action is "dislike")
+        obj = $scope.objectFindByKey($scope.questions,"id",question.id)
+        obj.votes = question.votes
+        # ind = $scope.questions.indexOf(question)
+        # $scope.questions[ind] = question
+        $scope.$digest()
+  
   # array = [{key:value},{key:value}]
   $scope.objectFindByKey = (array, key, value) ->
     i = 0

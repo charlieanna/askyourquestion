@@ -5,11 +5,12 @@ class QuestionSerializer < ActiveModel::Serializer
   end
   
   def liked
-    if current_user
-      current_user.liked? object 
-    else
-      false
-    end
+    true
+    # if current_user.liked? object 
+#       true
+#     else
+#       false
+#     end
   end
   
   def votes
