@@ -1,20 +1,5 @@
 @QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,$fromoutside) ->
   $scope.questions = []
-  $window.pubnub.subscribe
-    channel: "a"
-    message: (data) ->
-      console.log data
-      question = data.question.question
-      if data.question? and data.action is "add"
-        $scope.questions.push question
-        $scope.$digest()
-      else if data.question? and (data.action is "like" or data.action is "dislike")
-        obj = $scope.objectFindByKey($scope.questions,"id",question.id)
-        ind = $scope.questions.indexOf(obj)
-        $scope.questions[ind] = question
-        $scope.$digest()
-  
-  # array = [{key:value},{key:value}]
   $scope.objectFindByKey = (array, key, value) ->
     i = 0
 
@@ -25,6 +10,36 @@
  
   
   $scope.predicate = '-votes'
+  $scope.subscribe_as_admin = (channel,isAdmin)->
+    if isAdmin
+      $window.pubnub.subscribe
+        channel: channel
+        message: (data) ->
+          console.log data
+          question = data.question.question
+          if data.question? and (data.action is "add")
+            $scope.questions.push question
+            $scope.$digest()
+          else if data.question? and (data.action is "like" or data.action is "dislike")
+            obj = $scope.objectFindByKey($scope.questions,"id",question.id)
+            ind = $scope.questions.indexOf(obj)
+            $scope.questions[ind] = question
+            $scope.$digest()
+            
+    else
+      $window.pubnub.subscribe
+        channel: channel
+        message: (data) ->
+          console.log data
+          question = data.question.question
+          if data.question? and (data.action is "approved" or data.action is "disapproved")
+            $scope.questions.push question
+            $scope.$digest()
+          else if data.question? and (data.action is "like" or data.action is "dislike")
+            obj = $scope.objectFindByKey($scope.questions,"id",question.id)
+            ind = $scope.questions.indexOf(obj)
+            $scope.questions[ind] = question
+            $scope.$digest()
   $scope.addQuestion = ->
     question = {body:$scope.question.body;votes:parseInt($scope.question.votes)}
     $scope.questions.push(question)

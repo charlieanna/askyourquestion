@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => :a,
+        :channel  => event.code,
         :message  => {question:serializer,action:"add"},
         :callback => @my_callback
     )

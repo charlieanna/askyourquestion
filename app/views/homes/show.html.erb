@@ -2,10 +2,11 @@
   <% if current_admin.event.nil?%>
     <%= link_to "Create an event",new_event_path,class:"btn btn-primary" %>
   <% else %>
+    
   <div id="name"><%= current_admin.event_name %></div>
   <div id="code"><%= current_admin.event_code %></div>
   <ul class="questions">
-    <%= render :partial => 'questions/questions', :locals => { :event => current_admin.event } %>
+    <%= render :partial => 'questions/questions', :locals => { user: "admin",:event => current_admin.event } %>
   </ul>
   <% end %>
 <% end %>

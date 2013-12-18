@@ -8,7 +8,7 @@ class ApprovalsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => :a,
+        :channel  => question.event.code,
         :message  => {question:serializer,action:"approved"},
         :callback => @my_callback
     )
@@ -22,7 +22,7 @@ class ApprovalsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => :a,
+        :channel  => question.event.code,
         :message  => {question:serializer,action:"disapproved"},
         :callback => @my_callback
     )

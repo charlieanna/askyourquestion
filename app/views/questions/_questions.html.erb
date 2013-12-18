@@ -1,4 +1,4 @@
-<ul class="questions" ng-controller="QuestionsCtrl" ng-init="get('<%= event.id%>')">
+<ul class="questions" ng-controller="QuestionsCtrl" ng-init="get('<%= event.id%>');subscribe_as_admin('<%=event.code%>',<%= current_admin.present?%>)">
   <li class="row question animate-repeat question" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
      <% unless admin_signed_in? %>
        <span class="vote-buttons">

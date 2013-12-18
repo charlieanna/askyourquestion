@@ -14,7 +14,7 @@ class VotesController < ApplicationController
     ## Execute Publish
     puts question.liked_by current_user
     @pubnub.publish(
-        :channel  => :a,
+        :channel  => event.code,
         :message  => {question:serializer,action:"like"},
         :callback => @my_callback
     )
@@ -30,7 +30,7 @@ class VotesController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => :a,
+        :channel  => event.code,
         :message  => {question:serializer,action:"dislike"},
         :callback => @my_callback
     )
