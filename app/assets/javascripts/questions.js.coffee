@@ -13,7 +13,7 @@
   $scope.subscribe_as_admin = (channel,isAdmin)->
     if isAdmin
       $window.pubnub.subscribe
-        channel: channel+"_admin"
+        channel: channel
         message: (data) ->
           console.log data
           question = data.question.question
@@ -28,7 +28,7 @@
             
     else
       $window.pubnub.subscribe
-        channel: channel+"_user"
+        channel: channel
         message: (data) ->
           console.log data
           question = data.question.question

@@ -29,6 +29,8 @@ group :test do
 gem 'selenium-webdriver'
 end
 gem 'pubnub'
+gem 'unicorn'
+gem 'foreman'
 gem 'active_model_serializers'
 gem 'gon'
 gem 'angularjs-rails'
