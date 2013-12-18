@@ -1,4 +1,4 @@
-@QuestionsCtrl = ["$scope","$window","$http","$fromoutside", ($scope,$window, $http,$fromoutside) ->
+@QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,fromoutside) ->
   $scope.questions = []
   $scope.objectFindByKey = (array, key, value) ->
     i = 0
