@@ -1,4 +1,4 @@
-@QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,$fromoutside) ->
+@QuestionsCtrl = ["$scope","$window","$http","$fromoutside", ($scope,$window, $http,$fromoutside) ->
   $scope.questions = []
   $scope.objectFindByKey = (array, key, value) ->
     i = 0
@@ -13,7 +13,7 @@
   $scope.subscribe_as_admin = (channel,isAdmin)->
     if isAdmin
       $window.pubnub.subscribe
-        channel: channel
+        channel: channel+"_admin"
         message: (data) ->
           console.log data
           question = data.question.question
@@ -28,7 +28,7 @@
             
     else
       $window.pubnub.subscribe
-        channel: channel
+        channel: channel+"_user"
         message: (data) ->
           console.log data
           question = data.question.question
