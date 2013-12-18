@@ -10,7 +10,7 @@
   <% end %>
 <% end %>
 
-<ul class="questions" ng-controller="QuestionsCtrl" >
+
 <%= form_for :question, :url => event_questions_path(Event.last),remote: true do |f| %>
 <div class="col-xs-9">
   <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control",id:"body" %>

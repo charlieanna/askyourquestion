@@ -18,6 +18,9 @@ class QuestionsController < ApplicationController
   def index
     event = Event.find(params[:event_id])
     @questions = event.questions
+    @questions.each do |question|
+      question.liked_by_current_user = current_user.liked? question 
+    end
     respond_with @questions
   end
   

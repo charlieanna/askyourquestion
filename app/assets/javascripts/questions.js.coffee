@@ -1,6 +1,5 @@
 @QuestionsCtrl = ["$scope","$window","$http","fromoutside", ($scope,$window, $http,$fromoutside) ->
   $scope.questions = []
-  
   $window.pubnub.subscribe
     channel: "a"
     message: (data) ->
@@ -11,9 +10,8 @@
         $scope.$digest()
       else if data.question? and (data.action is "like" or data.action is "dislike")
         obj = $scope.objectFindByKey($scope.questions,"id",question.id)
-        obj.votes = question.votes
-        # ind = $scope.questions.indexOf(question)
-        # $scope.questions[ind] = question
+        ind = $scope.questions.indexOf(obj)
+        $scope.questions[ind] = question
         $scope.$digest()
   
   # array = [{key:value},{key:value}]
@@ -66,11 +64,11 @@
       data:
         _method: "create"
     ).done (data) ->
-      ind = $scope.questions.indexOf(question)
-      question = data.question
-      $scope.questions[ind] = question
-      $scope.$digest()
-   
+      # ind = $scope.questions.indexOf(question)
+ #      question = data.question
+ #      $scope.questions[ind] = question
+ #      $scope.$digest()
+ #   
         
   $scope.down = (question) ->
    $.ajax(
@@ -80,10 +78,10 @@
       data:
         _method: "delete"
     ).done (data)->
-      ind = $scope.questions.indexOf(question)
-      question = data.question
-      $scope.questions[ind] = question
-      $scope.$digest()
+      # ind = $scope.questions.indexOf(question)
+ #      question = data.question
+ #      $scope.questions[ind] = question
+ #      $scope.$digest()
       
       
   

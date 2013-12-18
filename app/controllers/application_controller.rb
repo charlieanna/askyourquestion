@@ -2,7 +2,7 @@ require 'pubnub'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_pubnub
-  
+  serialization_scope :view_context
   def set_pubnub
     ## Instantiate a new PubNub instance.
     @pubnub = Pubnub.new(

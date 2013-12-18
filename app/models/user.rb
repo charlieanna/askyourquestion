@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   def like(question)
     if question.approved?
       likes(question)
+      question.liked_by_current_user = true
       true
     else
       false
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
   def dislike(question)
     if question.approved?
       dislikes(question)
+      question.liked_by_current_user = false
       true
     else
       false
