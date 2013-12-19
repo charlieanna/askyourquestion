@@ -268,30 +268,31 @@ p {
   background-color: #ff6224;
 }
 .blog-link {
-  -webkit-transition: all 200ms ease;
-  -o-transition: all 200ms ease;
-  transition: all 200ms ease;
-  font-family: Bitter;
-  color: #fa875b;
-  font-size: 18px;
-  font-style: italic;
-  text-decoration: none;
+  -webkit-transition: all 200ms ease  !important;
+  -o-transition: all 200ms ease !important;
+  transition: all 200ms ease !important;
+  font-family: Bitter !important;
+  color: #fa875b !important;
+  font-size: 18px !important;
+  font-style: italic !important;
+  text-decoration: none !important;
 }
 .blog-link:hover {
-  color: #ff5917;
+  color: #ff5917 !important;
 }
 .footer-link {
-  margin-left: 8px;
-  border-bottom: 1px solid rgba(131, 125, 153, 0.34);
-  -webkit-transition: all 200ms ease;
-  -o-transition: all 200ms ease;
-  transition: all 200ms ease;
-  font-family: Bitter;
-  color: #837d99;
-  text-decoration: none;
+  font-size:14px;
+  margin-left: 8px !important;
+  border-bottom: 1px solid rgba(131, 125, 153, 0.34) !important;
+  -webkit-transition: all 200ms ease !important;
+  -o-transition: all 200ms ease !important;
+  transition: all 200ms ease !important;
+  font-family: Bitter !important;
+  color: #837d99 !important;
+  text-decoration: none !important;
 }
 .footer-link:hover {
-  border-bottom: 1px solid rgba(131, 125, 153, 0.86);
+  border-bottom: 1px solid rgba(131, 125, 153, 0.86) !important;
 }
 .footer-text {
   display: inline;
