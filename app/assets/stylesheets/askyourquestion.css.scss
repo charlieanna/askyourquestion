@@ -30,3 +30,103 @@ border-color: #d94f79;
 .alert.warning {
  background-color:#800;
  }
+ /*********************/
+ /*-	Widgets section	-*/
+ /*********************/
+
+ /* General widget settings */
+ .widget {
+ 	clear: both;
+ 
+ 	position: relative;
+ 	margin-bottom: 20px;
+ }
+
+ .widget-header + .widget-content {
+ 	border-top: none;
+ 	-webkit-border-top-left-radius: 0;
+ 	-webkit-border-top-right-radius: 0;
+ 	-moz-border-radius-topleft: 0;
+ 	-moz-border-radius-topright: 0;
+ 	border-top-left-radius: 0;
+ 	border-top-right-radius: 0;
+ }
+
+ /*- Widget header -*/
+ .widget-header {
+ 	position: relative;
+ 	height: 40px;
+ 	background: #DDDDDD;
+ 	border: 1px solid #CCCCCC;
+ 	-webkit-border-top-left-radius: 5px;
+ 	-webkit-border-top-right-radius: 5px;
+ 	-moz-border-radius-topleft: 5px;
+ 	-moz-border-radius-topright: 5px;
+ 	border-top-left-radius: 5px;
+ 	border-top-right-radius: 5px;
+ }
+	
+ .widget-header h3 {
+ 	position: relative;
+ 	display: inline-block;
+ 	padding-top: 0px;
+ 	margin-left: 10px;
+ 	line-height: 20px;
+ 	font-size: 16px;
+ 	font-weight: 700;
+ 	color: #49708A;
+ 	text-shadow: 1px 1px 1px #F5F5F5;
+ }
+
+ .widget-header i {
+ 	line-height: 16px;
+ }
+
+ /*- Widget content -*/
+ .widget-content {
+ 	padding: 20px 15px 15px;
+ 	background: #F5F5F5;
+ 	border: 1px solid #CCCCCC;
+ 	-moz-border-radius: 5px;
+ 	-webkit-border-radius: 5px;
+ 	border-radius: 5px;
+ }
+
+ .widget-content p {
+ 	font-size: 14px;
+ }
+
+ .widget-content ol > li {
+ 	list-style: none;
+ 	padding-bottom: 20px;
+ 	text-align: justify;
+ 	margin-right: 15px;
+ }
+
+ .widget-content ol > li > h4 > i {
+ 	margin-top: 5px
+ }
+
+ .widget-content:before, .widget-content:after {
+     content:"";
+     display:table;
+     clear:both;
+ }
+
+ /*- Widget tables -*/
+ .widget-table .widget-content {
+ 	padding: 0;
+ }
+
+ .widget-table .table {
+ 	margin-bottom: 0;
+ 	border: none;
+ }
+
+ .widget-table .table tr td:first-child {
+ 	border-left: none;
+ }
+
+ .widget-table .table tr th:first-child {
+ 	border-left: none;
+ }
