@@ -1,12 +1,20 @@
-
+<div>
 <%= form_for :question, :url => event_questions_path(@event),remote: true do |f| %>
-<div class="col-xs-9">
-  <%= f.text_field :body,placeholder:"Ask your question here",class:"form-control",id:"body" %>
- 
+<div class="row">
+<div class='col-md-3'>
 </div>
- <%= f.submit "Ask",class: "btn btn-primary"%>
+<div class="col-md-6 col-xs-12">
+  <%= f.text_area :body,placeholder:"Ask your question here",class:"form-control",id:"body" %>
+  <%= f.submit "Ask",class: "btn btn-primary col-md-3 col-sm-2 col-xs-3", style:"float:right"%>
+</div>
+</div>
 <% end %>
- 
-<ul class="questions">
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+<ul class="questions" style="margin-top:5%">
   <%= render :partial => 'questions/questions', :locals => { :event => @event } %>
 </ul>
+</div>
+</div>
+</div>
+
