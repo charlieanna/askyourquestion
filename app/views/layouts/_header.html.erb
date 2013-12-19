@@ -7,8 +7,8 @@
       <div class="w-col w-col-8 nav-column" style="float:right">
         <% if admin_signed_in? %>
           Logged in as <strong><%= current_admin.email %></strong>.
-          <%= link_to 'Edit profile', edit_admin_registration_path %> |
-          <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
+          <%= link_to 'Edit profile', edit_admin_registration_path ,class:"nav-link" %>
+          <%= link_to "Logout", destroy_admin_session_path, method: :delete ,class:"nav-link" %>
         <% elsif current_user.guest?%>
           <!-- Signed in as <%= current_user.username %> -->
           <div class="btn-group">
@@ -26,7 +26,7 @@
           </div> -->
         <% else %>
           <!-- Signed in as <%= current_user.username %> -->
-          <%= link_to "Join Event", new_subscriber_path ,class:"btn btn-primary" %>
+          <%= link_to "Join Event", new_subscriber_path,class:"nav-link" %>
           <%= link_to "Sign out", logout_path,method: :delete,class:"btn btn-block btn-danger" %> 
         <% end %>
       </div>

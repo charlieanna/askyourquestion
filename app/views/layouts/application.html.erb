@@ -29,12 +29,14 @@
 </head>
 <body>
  
-  <% if notice %>
-  <%= notice %>
-  <% end %>
-  <% if alert %>
-  <%= alert %>
-  <% end %>
+     <% if notice || flash[:warning] %>
+     <div class="alert #{'warning' if warning}" style="display:none">
+     <%= notice || warning%>
+ </div>
+     <% end %>
+     
+   
+  
   <%= render 'layouts/header' %>
   
   
