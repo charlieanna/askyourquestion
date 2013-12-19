@@ -10,12 +10,10 @@
       <div id="code" class="col-md-6 col-xs-6">Event code: <%= current_admin.event_code %></div>
   	</div>
   </div>
-
-
-    
- 
   <ul class="questions">
     <%= render :partial => 'questions/questions', :locals => { user: "admin",:event => current_admin.event } %>
   </ul>
   <% end %>
+<% else %>
+
 <% end %>

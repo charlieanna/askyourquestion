@@ -29,6 +29,8 @@
 </head>
 <body>
  
+<div class="wrapper">
+ 
      <% if notice || flash[:warning] %>
      <div class="alert #{'warning' if warning}" style="display:none">
      <%= notice || warning%>
@@ -45,7 +47,15 @@
  
 
 <%= yield %>
+         
+</div>
  
-  
+<div class="section grey footer">
+   <div class="w-container">
+     <p class="footer-text">Made by IdleCampus.</p><a class="footer-link" href="http://thenounproject.com/" target="_blank">Question by Martin Delin from The Noun Project.</a><a class="footer-link" href="http://idlecampus.com"
+     target="_blank">IdleCampus.</a>
+     <%= image_tag("question.png",width:"50px",class:"logo-in-footer") %>
+   </div>
+ </div>
 </body>
 </html>
