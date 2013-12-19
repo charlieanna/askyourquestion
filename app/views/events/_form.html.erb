@@ -3,3 +3,21 @@
   <%= f.text_field :name,placeholder: "Enter the event name here: "%>
   <%= f.submit "Create Event",class:"btn btn-danger" %>
 <% end %>
+
+
+
+
+<!-- <div class="container">
+  <%= form_for @event, :html => {:class => 'form-signin', 'role' => 'form'} do |f| %>
+     
+        <h2 class="form-signin-heading">Please sign up</h2>
+       
+        <%= f.email_field :email,placeholder:"Email address", :autofocus => true,class:"form-control",required: true %>
+        <%= f.password_field :password,placeholder:"Password", class:"form-control",required: true %>
+       <%= f.password_field :password_confirmation,placeholder:"Confirm password",class:"form-control" ,required: true %>
+       
+         <%= f.submit "Sign up",class:"btn btn-lg btn-primary btn-block" %>
+         <%= render "devise/shared/links" %>
+        <% end %> 
+
+    </div> -->

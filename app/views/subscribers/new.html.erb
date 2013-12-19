@@ -1,5 +1,7 @@
-<%= form_for :subscriber,url: user_join_path(current_user) do |f|%>
-  <%= f.label :code%>
-  <%= f.text_field :code ,placeholder: "Enter the code of the event to join:",required: true%>
-  <%= f.submit "Join Event",class:"btn btn-primary"%>
-<% end %>
+<div class="container">
+  <%= form_for :subscriber, :url => user_join_path(current_user), :html => {:class => 'form-signin', 'role' => 'form'} do |f| %>
+    <h2 class="form-signin-heading">Join Event</h2>
+    <%= f.text_field :code,placeholder:"Event code", :autofocus => true,class:"form-control",required: true %><br>
+    <%= f.submit "Join Event",class:"btn btn-lg btn-primary btn-block" %>
+  <% end %> 
+</div>
