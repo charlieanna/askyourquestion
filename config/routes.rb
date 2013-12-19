@@ -27,6 +27,6 @@ Askyourquestion::Application.routes.draw do
   get  'auth/:provider/callback' => 'sessions#create',:as => 'login'
   delete 'logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
-  resource :session,only: [:create]
+  resource :session,only: [:create,:destroy]
   resources :subscribers,only: [:new,:create,:destroy]
 end

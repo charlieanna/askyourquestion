@@ -1,5 +1,5 @@
 body {
-  font-family: Arial;
+  font-family: Arial !important;
   color: #333;
   font-size: 12px;
   line-height: 20px;
@@ -327,6 +327,9 @@ p {
   transition: all 300ms ease;
   text-shadow: rgba(0, 0, 0, 0.11) 0px 2px 0px;
 }
+.section.grey.footer {
+    margin-top:10%
+ }
 @media (max-width: 991px) {
   .section.grey.footer {
       margin-top:10%

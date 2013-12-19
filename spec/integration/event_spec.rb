@@ -36,7 +36,7 @@ end
 
 def sign_in_admin(admin)
   visit root_path
-  click_link "Admin Login"
+  click_link "Login"
   fill_in "Email",with: admin.email
   fill_in "Password",with:  admin.password
   click_button "Sign in"

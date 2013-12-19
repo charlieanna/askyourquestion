@@ -13,35 +13,42 @@
     ">
             <div class="app-name">Ask Your Question</div>
           </div>
-      <div class="w-col w-col-5 nav-column" style="float:right">
+      <div class="w-col w-col-6 nav-column" style="float:right" data-role='nav-links'>
         <% if admin_signed_in? %>
           Logged in as <strong><%= current_admin.email %></strong>.
           
             <% if current_admin.event.nil?%>
-              <%= link_to "Create an event",new_event_path,class:"nav-link" %>
+              <%= link_to "Create Event",new_event_path,class:"nav-link" %>
             <% end %>
           <!-- <%= link_to 'Edit profile', edit_admin_registration_path ,class:"nav-link" %> -->
           <%= link_to "Logout", destroy_admin_session_path, method: :delete ,class:"nav-link" %>
         <% elsif current_user.guest?%>
-          <!-- Signed in as <%= current_user.username %> -->
-          <div class="btn-group">
-            <%= link_to "Join Event", new_subscriber_path ,class:"nav-link" %>
-          </div>
-           <!-- new_admin_registration_path -->
-           <div class="btn-group">
-            <%= link_to "Signup", new_admin_registration_path ,class:"nav-link" %>
-            <%= link_to "Login", new_admin_session_path ,class:"nav-link" %>
-          </div>
-    
-          <!-- <div class="btn-group">
+          <% if current_user.event.present?%>
+            <div class="btn-group">
+              <h3 style="
+                  display: inline;
+              ">as <%= current_user.username %> or</h3>
             <%= link_to(image_tag("facebook.png"), "/auth/facebook")%>
             <%= link_to(image_tag("twitter.png"), "/auth/twitter")%>
-          </div> -->
-        <% else %>
-          <!-- Signed in as <%= current_user.username %> -->
-          <%= link_to "Join Event", new_subscriber_path,class:"nav-link" %>
-          <%= link_to "Sign out", logout_path,method: :delete,class:"btn btn-block btn-danger" %> 
+          </div>
+          <% else %>
+          
+          <div class="btn-group">
+            <%= link_to "Signup", new_admin_registration_path ,class:"nav-link" %>
+            <%= link_to "Login", new_admin_session_path ,class:"nav-link" %>
+            <% if current_user.event.nil? %>
+            <%= link_to "Join Event", new_subscriber_path ,class:"nav-link" %>
+            <% end %>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="btn-group">
+            <h3 style="
+                display: inline;
+            ">as <%= current_user.username %> </h3>
+             <%= link_to "Logout", session_path, method: :delete ,class:"nav-link" %>
         <% end %>
+        
       </div>
     </div>
   </header>

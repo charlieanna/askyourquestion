@@ -25,6 +25,15 @@
      <p class="col-md-10">You will be send all the questions for approval and only then the audience will be able to vote on the questions.</p>
   
   </div>
+  
+  
+    <% if current_user.event.present?%>
+    <div class="col-md-4">
+      <h1 style="
+          display: inline;
+      ">Go back to</h1><%= link_to "<h1>#{current_user.event.code}</h1>".html_safe,current_user.event,class:"nav-link"%>
+  </div>
+    <% else %>
   <div class="col-md-3">
     <%= form_for :subscriber, :url => user_join_path(current_user), :html => {:class => 'form-signin', 'role' => 'form'} do |f| %>
       <h2 class="form-signin-heading">Join Event</h2>
@@ -35,6 +44,6 @@
   </div>
 </div>
 
-
+<% end %>
 
 <% end %>

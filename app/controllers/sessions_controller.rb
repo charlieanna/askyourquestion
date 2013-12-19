@@ -4,11 +4,18 @@ class SessionsController < ApplicationController
   def create
     
     auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"],auth["uid"]) ||
-      User.create_with_omniauth(auth)
-    
+    user = User.find_by_provider_and_uid(auth["provider"],auth["uid"]) || User.create_with_omniauth(auth)
+    if current_user.event.present?
+       current_user.event.users << user
+    end  
+    current_user.delete
     session[:user_id] = user.id
-    redirect_to root_path
+    if current_user.event.present?
+       redirect_to current_user.event
+     else
+       redirect_to root_path
+    end
+    
   end
   def destroy
     session.delete(:user_id)
