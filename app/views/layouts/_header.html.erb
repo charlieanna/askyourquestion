@@ -29,12 +29,13 @@
                   display: inline;
               ">as <%= current_user.username %></h3></div>
               <div class="col-md-12">
-            <%= link_to(image_tag("facebook.png"), "/auth/facebook")%>
-            <%= link_to(image_tag("twitter.png"), "/auth/twitter")%>
+            <%= link_to(image_tag("facebook.png"), "/auth/facebook",id:"facebook")%>
+            <%= link_to(image_tag("twitter.png"), "/auth/twitter",id:"twitter")%>
+             <%= link_to "Logout", session_path, method: :delete ,class:"nav-link" %>
               </div>
           <% else %>
           
-          <div class="btn-group">
+          <div class="btn-group hidden-xs">
             <%= link_to "Signup", new_admin_registration_path ,class:"nav-link" %>
             <%= link_to "Login", new_admin_session_path ,class:"nav-link" %>
             <% if current_user.event.nil? %>
