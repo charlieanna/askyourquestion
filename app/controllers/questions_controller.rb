@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
   
   def show
     question = Question.find(params[:id])
+    question.liked_by_current_user = current_user.liked? question 
     respond_with question
   end
 

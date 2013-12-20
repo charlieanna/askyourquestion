@@ -37,8 +37,9 @@
             $scope.$digest()
           else if data.question? and (data.action is "like" or data.action is "dislike")
             obj = $scope.objectFindByKey($scope.questions,"id",question.id)
+            obj.votes = question.votes
             ind = $scope.questions.indexOf(obj)
-            $scope.questions[ind] = question
+            $scope.questions[ind] = obj
             $scope.$digest()
   $scope.addQuestion = ->
     question = {body:$scope.question.body;votes:parseInt($scope.question.votes)}
@@ -79,10 +80,10 @@
       data:
         _method: "create"
     ).done (data) ->
-      # ind = $scope.questions.indexOf(question)
- #      question = data.question
- #      $scope.questions[ind] = question
- #      $scope.$digest()
+      ind = $scope.questions.indexOf(question)
+      question.liked = data.question.liked
+      $scope.questions[ind] = question
+      $scope.$digest()
  #   
         
   $scope.down = (question) ->
@@ -93,10 +94,10 @@
       data:
         _method: "delete"
     ).done (data)->
-      # ind = $scope.questions.indexOf(question)
- #      question = data.question
- #      $scope.questions[ind] = question
- #      $scope.$digest()
+      ind = $scope.questions.indexOf(question)
+      question.liked = data.question.liked
+      $scope.questions[ind] = question
+      $scope.$digest()
       
       
   
