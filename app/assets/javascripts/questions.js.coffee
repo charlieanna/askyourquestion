@@ -15,7 +15,7 @@
       $window.pubnub.subscribe
         channel: channel
         message: (data) ->
-          console.log data
+          # console.log data
           question = data.question.question
           if data.question? and (data.action is "add")
             $scope.questions.push question
@@ -30,7 +30,7 @@
       $window.pubnub.subscribe
         channel: channel
         message: (data) ->
-          console.log data
+          # console.log data
           question = data.question.question
           if data.question? and (data.action is "approved" or data.action is "disapproved")
             $scope.questions.push question
@@ -110,7 +110,7 @@
       method: "GET"
       url: url
     ).success((rdata, status, headers, config) ->
-      console.log rdata
+      # console.log rdata
       $scope.questions = rdata.questions
       
     ).error (data, status, headers, config) ->

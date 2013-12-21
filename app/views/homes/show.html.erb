@@ -1,13 +1,19 @@
 <% if admin_signed_in? %>
   <% if current_admin.event.nil?%>
-   
+  <div class="container">
+    <%= form_for :event,url: events_path, :html => {:class => 'form-signin', 'role' => 'form'} do |f| %>
+      <h2 class="form-signin-heading">Create Event</h2>
+      <%= f.text_field :name,placeholder:"Event name:", :autofocus => true,class:"form-control",required: true %><br>
+      <%= f.submit "Create Event",class:"btn btn-lg btn-primary btn-block" %>
+    <% end %> 
+  </div>
   <% else %>
 
   <div class="widget col-md-offset-3 col-md-6 col-xs-12">
 
   	<div class="widget-content row">
       <div id="name" class="col-md-6 col-xs-6">Event name: <%= current_admin.event_name %></div>
-      <div id="code" class="col-md-6 col-xs-6">Event code: <%= current_admin.event_code %></div>
+      <div class="col-md-6 col-xs-6">Event code:<span id="code"> <%= current_admin.event_code %></span></div>
   	</div>
   </div>
   <ul class="questions">

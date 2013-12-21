@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     if current_user.event.present?
        redirect_to current_user.event
      else
+      
        redirect_to root_path
     end
     

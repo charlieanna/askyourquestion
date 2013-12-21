@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
     @question  = event.questions.new(question_params)
     @question.save
     serializer = QuestionSerializer.new @question
-    @my_callback = lambda { |message| puts(message) }
+    @my_callback = lambda { |m| "nothing" }
 
     ## Execute Publish
     @pubnub.publish(
@@ -17,7 +17,11 @@ class QuestionsController < ApplicationController
   
   def index
     event = Event.find(params[:event_id])
-    @questions = event.questions
+    if current_admin
+      @questions = event.questions
+    else
+       @questions = event.questions.where(approved: true)
+    end
     @questions.each do |question|
       question.liked_by_current_user = current_user.liked? question 
     end

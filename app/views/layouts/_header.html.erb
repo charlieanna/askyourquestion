@@ -13,13 +13,11 @@
     ">
             <div class="app-name">Ask Your Question</div>
           </div>
-      <div class="w-col w-col-6 nav-column" style="float:right" data-role='nav-links'>
+      <div class="w-col w-col-6 nav-column" data-role='nav-links'>
         <% if admin_signed_in? %>
           Logged in as <strong><%= current_admin.email %></strong>.
           
-            <% if current_admin.event.nil?%>
-              <%= link_to "Create Event",new_event_path,class:"nav-link" %>
-            <% end %>
+          
           <!-- <%= link_to 'Edit profile', edit_admin_registration_path ,class:"nav-link" %> -->
           <%= link_to "Logout", destroy_admin_session_path, method: :delete ,class:"nav-link" %>
         <% elsif current_user.guest?%>
@@ -39,7 +37,7 @@
             <%= link_to "Signup", new_admin_registration_path ,class:"nav-link" %>
             <%= link_to "Login", new_admin_session_path ,class:"nav-link" %>
             <% if current_user.event.nil? %>
-            <%= link_to "Join Event", new_subscriber_path ,class:"nav-link" %>
+            <!-- <%= link_to "Join Event", new_subscriber_path ,class:"nav-link" %> -->
             <% end %>
           </div>
           <% end %>

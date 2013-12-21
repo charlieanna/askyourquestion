@@ -8,11 +8,7 @@ class VotesController < ApplicationController
     current_user.like question
     question.user = current_user
     serializer = QuestionSerializer.new question
-    puts serializer
-    @my_callback = lambda { |message| puts(message) }
-
-    ## Execute Publish
-    puts question.liked_by current_user
+    @my_callback = lambda { }
     @pubnub.publish(
         :channel  => event.code,
         :message  => {question:serializer,action:"like"},
@@ -26,7 +22,7 @@ class VotesController < ApplicationController
     current_user.dislike question
     question.user = current_user
     serializer = QuestionSerializer.new question
-    @my_callback = lambda { |message| puts(message) }
+    @my_callback = lambda {  }
 
     ## Execute Publish
     @pubnub.publish(

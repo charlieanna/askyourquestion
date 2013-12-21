@@ -4,7 +4,7 @@ class ApprovalsController < ApplicationController
     question.approved = true
     question.save
     serializer = QuestionSerializer.new question
-    @my_callback = lambda { |message| puts(message) }
+    @my_callback = lambda { }
 
     ## Execute Publish
     @pubnub.publish(
@@ -18,7 +18,7 @@ class ApprovalsController < ApplicationController
     question = Question.find(params[:question_id])
     question.approved = false
     serializer = QuestionSerializer.new question
-    @my_callback = lambda { |message| puts(message) }
+    @my_callback = lambda { }
 
     ## Execute Publish
     @pubnub.publish(

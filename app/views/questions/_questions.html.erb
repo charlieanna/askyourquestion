@@ -6,24 +6,24 @@
     
     <% unless admin_signed_in? %>
       <span class="vote-buttons">
-     <button ng-click="up(question)" class="btn btn-success" id="bluebutton" ng-show="!question.liked"><i class='fa fa-thumbs-up'></i>
+     <button ng-click="up(question)" class="btn btn-success" id="up" ng-show="!question.liked"><i class='fa fa-thumbs-up'></i>
      </button>
  
-     <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked"><i class='fa fa-thumbs-down'></i></button>
+     <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked" id="down"><i class='fa fa-thumbs-down'></i></button>
    </span>
      <% else %>
      <span class="vote-buttons">
-       <button class="btn btn-success" id="bluebutton" ng-click="approve(question)"><i class='fa fa-thumbs-up'></i>Approve </button>
-       <button class="btn btn-success"  ng-click="reject(question)" id="bluebutton"><i class='fa fa-thumbs-down'></i>Reject</button>
+       <button class="btn btn-success" id="approve" ng-click="approve(question)"><i class='fa fa-thumbs-up'></i>Approve </button>
+       <button class="btn btn-success"  ng-click="reject(question)" id="reject"><i class='fa fa-thumbs-down'></i>Reject</button>
    
   </span>
     
       
      <% end %>
      <p style="display: inline;">{{question.body }}</p>
-     
+     <span id="votes">
      {{question.votes}}
-       
+   </span>
     </div>
    
   </li>

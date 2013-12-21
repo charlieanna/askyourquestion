@@ -1,5 +1,0 @@
-console.log("<%= @id %>");
-console.log("<%= @old_index %>");
-console.log("<%= @new_index %>");
-$("li div#<%=@id %>").remove();
-$(".questions li:eq(<%=@new_index%>)").before($("<%= escape_javascript(render @question) %>"));
