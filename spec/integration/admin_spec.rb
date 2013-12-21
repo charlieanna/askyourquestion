@@ -69,29 +69,25 @@ end
     create_event
     code = page.find('div span#code').text 
     click_link "Logout"
-    fill_in "subscriber_code",with: code
-    click_button "Join Event"
+    sign_in_as_guest(code)
     fill_in "body",with: "Hi how are you?"
     click_button "Ask"
     click_link "Logout"
     sign_in_admin(admin)
     click_button "approve"
     click_link "Logout"
-    fill_in "subscriber_code",with: code
-    click_button "Join Event"
+    sign_in_as_guest(code)
     page.should have_content "Hi how are you?"
     click_button "up"
     click_link "Logout"
-    fill_in "subscriber_code",with: code
-    click_button "Join Event"
+    sign_in_as_guest(code)
     votes = page.find('#votes').text 
     expect(votes).to eq("1")
     click_button "up"
     expect(page).to have_button "down"
     click_button "down"
     click_link "Logout"
-    fill_in "subscriber_code",with: code
-    click_button "Join Event"
+    sign_in_as_guest(code)
     votes = page.find('#votes').text 
     expect(votes).to eq("1")
    end
@@ -99,7 +95,6 @@ end
 end
 
 def sign_in_as_guest(code)
-  click_link "Logout"
   fill_in "subscriber_code",with: code
   click_button "Join Event"
 end
