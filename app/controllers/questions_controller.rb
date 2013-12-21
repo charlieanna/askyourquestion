@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
         :message  => {question:serializer,action:"add"},
         :callback => @my_callback
     )
+    render nothing: true
   end
   
   def index

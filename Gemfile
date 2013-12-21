@@ -26,6 +26,7 @@ group :test do
   gem "poltergeist", "~> 1.4.1"
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'growl-rspec'
 end
 gem 'pubnub'
 gem 'unicorn'

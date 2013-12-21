@@ -8,7 +8,7 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'capybara/poltergeist'
   Capybara.javascript_driver = :poltergeist
- Capybara.default_driver = :poltergeist
+  Capybara.default_driver = :poltergeist 
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
   end
@@ -60,18 +60,25 @@ Spork.prefork do
       config.use_transactional_fixtures = false
       
      config.include FactoryGirl::Syntax::Methods
-      config.before :each do
-        if Capybara.current_driver == :rack_test
-          DatabaseCleaner.strategy = :transaction
-        else
-          DatabaseCleaner.strategy = :truncation
-        end
-        DatabaseCleaner.start
-      end
-         
-      config.after do
-        DatabaseCleaner.clean
-      end
+     config.before(:suite) do
+       DatabaseCleaner.clean_with :truncation
+       DatabaseCleaner.strategy = :transaction
+     end
+
+     config.before(:each) do |group|
+       case group.example.metadata[:type]
+       
+       when :request
+         DatabaseCleaner.strategy = :truncation
+       else
+         DatabaseCleaner.strategy = :transaction
+       end
+       DatabaseCleaner.start
+     end
+
+     config.after(:each) do
+       DatabaseCleaner.clean
+     end
     
      
   end

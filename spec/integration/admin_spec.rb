@@ -53,6 +53,55 @@ end
       page.should have_button "Join Event"
     end
   end
+  
+  context "can allow questions" do 
+  
+  scenario "can see the questions asked" do
+    question = create(:question)
+    sign_in_admin(question.event.admin)
+    page.should have_content question.body
+    page.should have_button "approve"
+    page.should have_button "reject"
+  end
+  
+  scenario "and see the question on the screen below" ,js: true do
+    sign_in_admin(admin)
+    create_event
+    code = page.find('div span#code').text 
+    click_link "Logout"
+    fill_in "subscriber_code",with: code
+    click_button "Join Event"
+    fill_in "body",with: "Hi how are you?"
+    click_button "Ask"
+    click_link "Logout"
+    sign_in_admin(admin)
+    click_button "approve"
+    click_link "Logout"
+    fill_in "subscriber_code",with: code
+    click_button "Join Event"
+    page.should have_content "Hi how are you?"
+    click_button "up"
+    click_link "Logout"
+    fill_in "subscriber_code",with: code
+    click_button "Join Event"
+    votes = page.find('#votes').text 
+    expect(votes).to eq("1")
+    click_button "up"
+    expect(page).to have_button "down"
+    click_button "down"
+    click_link "Logout"
+    fill_in "subscriber_code",with: code
+    click_button "Join Event"
+    votes = page.find('#votes').text 
+    expect(votes).to eq("1")
+   end
+end
+end
+
+def sign_in_as_guest(code)
+  click_link "Logout"
+  fill_in "subscriber_code",with: code
+  click_button "Join Event"
 end
 
 def sign_up_admin 

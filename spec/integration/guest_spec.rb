@@ -2,12 +2,12 @@ require 'spec_helper'
 
 feature "Guest" do
   before do
-    puts Event.all.pluck(:code)
+    
     @event = FactoryGirl.create(:event)
      
     visit root_path
   end
-  scenario "can join a event"do
+  scenario "can join a event" do
     fill_in "subscriber_code",with: @event.code
     click_button "Join Event"
     page.should have_content "Event joined. You can ask your questions and vote for them now."
@@ -20,7 +20,7 @@ feature "Guest" do
   end
   
   scenario "should not see the question after he asks" do
-     puts Event.all.pluck(:code)
+     
     question = build(:question)
     fill_in "subscriber_code",with: question.event.code
     click_button "Join Event"
@@ -30,7 +30,7 @@ feature "Guest" do
   end
   
   scenario "should see the question after it has been accepted" do
-     puts Event.all.pluck(:code)
+     
     question = build(:question)
     fill_in "subscriber_code",with: question.event.code
     click_button "Join Event"
@@ -57,18 +57,16 @@ feature "Guest" do
   end
   
   scenario "cannot vote on a question that is still pending with the admin" do
-     puts Event.all.pluck(:code)
+     
     question = create(:question)
-    puts question.approved
     fill_in "subscriber_code",with: question.event.code
     click_button "Join Event"
-    open_page
     page.should_not have_content question.body
     page.should_not have_button "up"
   end
   
   scenario "cannot vote on a question that is has been rejected by admin" do
-     puts Event.all.pluck(:code)
+     
     question = create(:question)
     
     fill_in "subscriber_code",with: question.event.code
